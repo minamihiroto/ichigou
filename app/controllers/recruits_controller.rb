@@ -25,4 +25,16 @@ class RecruitsController < ApplicationController
     @recruit = Recruit.find_by(id: params[:id])
   end
   
+  def update
+    @recruit = Recruit.find_by(id: params[:id])
+    @recruit.title = params[:title]
+    @recruit.text = params[:text]
+    @recruit.place = params[:place]
+    if @recruit.save
+      redirect_to recruits_path
+    else
+      redirect_to edit_recruit_path
+    end
+  end
+
 end
