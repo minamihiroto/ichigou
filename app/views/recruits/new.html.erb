@@ -1,7 +1,12 @@
 <%= form_tag ("/post/create") do %>
 
+<%= form_tag ("/recruits") do %>
+<h1>新規投稿</h1>
+<p>タイトル</p>
 <textarea name="title"></textarea>
+<p>本文</p>
 <textarea name="text"></textarea>
+<p>場所</p>
 <textarea name="place"></textarea>
 <input type="submit" value="投稿">
 

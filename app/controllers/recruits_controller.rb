@@ -1,7 +1,7 @@
 class RecruitsController < ApplicationController
 
   def index
-    @recruits = Recruit.all.order(created_at: :desc)
+    @recruits = Recruit.order(created_at: :desc)
   end
   
   def show
@@ -12,12 +12,13 @@ class RecruitsController < ApplicationController
     @recruit = Recruit.new
   end
 
-  def creates
-    @recruit = Recruit.new(title: params[:title])
-
-    @recruit.save
-
-    redirect_to('/recruits/index')
+  def create
+    @recruit = Recruit.new(title: params[:title],text: params[:text],place: params[:place])
+    if @recruit.save
+      redirect_to('/recruits')
+    else
+      redirect_to('/recruits/new')
+    end
   end
 
 end

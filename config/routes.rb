@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   
-get "recruits/index"
-get "recruits/new"
-get "recruits/:id" => "recruits#show"
+resources :recruits
 
-post "recruits/create"
 
 end
