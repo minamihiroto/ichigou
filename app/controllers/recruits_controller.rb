@@ -15,9 +15,9 @@ class RecruitsController < ApplicationController
   def create
     @recruit = Recruit.new(title: params[:title],text: params[:text],place: params[:place])
     if @recruit.save
-      redirect_to('/recruits')
+      redirect_to recruits_path
     else
-      redirect_to('/recruits/new')
+      redirect_to new_recruit_path
     end
   end
 
