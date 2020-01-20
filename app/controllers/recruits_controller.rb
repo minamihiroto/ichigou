@@ -37,4 +37,10 @@ class RecruitsController < ApplicationController
     end
   end
 
+  def destroy
+    @recruit = Recruit.find_by(id: params[:id])
+    @recruit.destroy
+    redirect_to recruits_path
+  end
+
 end
