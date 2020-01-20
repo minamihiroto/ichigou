@@ -1,0 +1,10 @@
+<%= form_for (@recruit) do |f|%>
+<h1>編集</h1>
+<p>タイトル</p>
+<textarea name="title"><%= @recruit.title %></textarea>
+<p>本文</p>
+<textarea name="text"><%= @recruit.text %></textarea>
+<p>場所</p>
+<textarea name="place"><%= @recruit.place %></textarea>
+<input type="submit" value="保存">
+<%end%>

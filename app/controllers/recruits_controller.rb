@@ -21,4 +21,8 @@ class RecruitsController < ApplicationController
     end
   end
 
+  def edit
+    @recruit = Recruit.find_by(id: params[:id])
+  end
+  
 end
