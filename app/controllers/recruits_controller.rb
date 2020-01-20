@@ -17,7 +17,7 @@ class RecruitsController < ApplicationController
 
     @recruit.save
 
-    redirect_to("/recruits/index")
+    redirect_to('/recruits/index')
   end
 
 end
