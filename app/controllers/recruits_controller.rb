@@ -11,4 +11,13 @@ class RecruitsController < ApplicationController
   def new      
     @recruit = Recruit.new
   end
+
+  def creates
+    @recruit = Recruit.new(title: params[:title])
+
+    @recruit.save
+
+    redirect_to("/recruits/index")
+  end
+
 end
