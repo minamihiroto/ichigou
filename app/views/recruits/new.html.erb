@@ -1,6 +1,6 @@
 <%= form_tag ("/post/create") do %>
 
-<%= form_tag ("/recruits") do %>
+<%= form_with url: recruits_path do |f| %>
 <h1>新規投稿</h1>
 <p>タイトル</p>
 <textarea name="title"></textarea>

@@ -3,5 +3,5 @@
   <%= @recruit.text %>
   <%= @recruit.place %>
 
-  <%= link_to("編集", "/recruits/#{@recruit.id}/edit") %>
-  <%= link_to("削除", "/recruits/#{@recruit.id}",{method: "DELETE"}) %>
+  <%= link_to("編集", edit_recruit_path) %>
+  <%= link_to("削除", recruit_path,{method: "DELETE"}) %>
