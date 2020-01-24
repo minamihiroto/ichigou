@@ -1,5 +1,5 @@
-<%= form_for (@recruit) do |f|%>
 <h1>編集</h1>
+<%= form_with model: @recruit do |f|%>
 <p>タイトル</p>
 <textarea name="title"><%= @recruit.title %></textarea>
 <p>本文</p>

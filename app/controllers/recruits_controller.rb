@@ -18,7 +18,7 @@ class RecruitsController < ApplicationController
       flash[:notice] = "ライブ募集が投稿されました"
       redirect_to recruits_path
     else
-      flash[:notice] = "ライブ募集の投稿に失敗しました"
+      flash[:notice] = "タイトルか本文、住所が記載されていません"
       redirect_to new_recruit_path
     end
   end
@@ -33,7 +33,7 @@ class RecruitsController < ApplicationController
       flash[:notice] = "ライブ募集が編集されました"
       redirect_to recruits_path
     else
-      flash[:notice] = "ライブ募集の編集に失敗しました"
+      flash[:notice] = "タイトルか本文、住所が記載されていません"
       redirect_to edit_recruit_path
     end
   end
