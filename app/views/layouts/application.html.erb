@@ -10,6 +10,28 @@
   </head>
 
   <body>
+    <header>
+       <% if @current_organizer %>
+         <%= link_to(@current_organizer.name, "/organizers/#{@current_organizer.id}") %>
+         <%= link_to("募集ライブ一覧", "/recruits") %>
+         <%= link_to("新規投稿", "/recruits/new") %>
+         <%= link_to("募集者一覧", "/organizers") %>
+         <%= link_to("ログアウト", "/organizers/logout", {method: :recruit}) %>
+       <% elsif @current_participant %>
+         <%= link_to(@current_participant.name, "/participants/#{@current_participant.id}") %>
+         <%= link_to("募集ライブ一覧", "/recruits") %>
+         <%= link_to("募集者一覧", "/organizers") %>
+         <%= link_to("ログアウト", "/participants/logout", {method: :recruit}) %>
+       <% else %>
+         <%= link_to("主催者新規登録", "/organizers/new") %>
+         <%= link_to("主催者ログイン", "/organizers/login") %>
+         <%= link_to("芸人新規登録", "/participants/new") %>
+         <%= link_to("芸人ログイン", "/participants/login") %>
+      <% end %>
+    </header>
+    <% if flash[:notice] %>
+      <%= flash[:notice]%>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,13 @@
+<h1>ユーザー名</h1>
+<%= @organizer.name %>
+<%= @organizer.email %>
+<%= @organizer.introduction %>
+
+<% if @organizer.id == @current_organizer.id %>
+  <%= link_to("編集", edit_organizer_path) %>
+  <%= link_to("退会", organizer_path,{method: "DELETE"}) %>
+<%end%>
+
+<% @organizer.recruits.each do |recruit|%>
+  <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+<%end%>

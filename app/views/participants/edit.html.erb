@@ -1,0 +1,10 @@
+<%= form_with model: @participant do |f|%>
+<h1>編集</h1>
+<p>名前</p>
+<input name="name"><%= @participant.name %>
+<p>メールアドレス</p>
+<input name="email"><%= @participant.email %>
+<p>自己紹介文</p>
+<textarea name="introduction"><%= @participant.introduction %></textarea>
+<input type="submit" value="保存">
+<%end%>

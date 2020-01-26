@@ -1,0 +1,7 @@
+<%= form_with url: organizers_login_path do |f| %>
+<%= f.label :メールアドレス %>
+<%= f.text_field :email %>
+<%= f.label :パスワード %>
+<%= f.text_field :password %>
+<%= f.submit "ログイン", class: "btn-primary" %>
+<%end%>

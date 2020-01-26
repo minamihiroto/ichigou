@@ -1,0 +1,9 @@
+<%= form_with url: organizers_path do |f| %>
+<%= f.label :ユーザー名 %>
+<%= f.text_field :name %>
+<%= f.label :メールアドレス %>
+<%= f.text_field :email %>
+<%= f.label :パスワード %>
+<%= f.text_field :password %>
+<%= f.submit "主催者新規登録", class: "btn-primary" %>
+<%end%>

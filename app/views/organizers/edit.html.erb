@@ -1,0 +1,10 @@
+<h1>編集</h1>
+<%= form_with model: @organizer do |f|%>
+<%= f.label :ユーザー名 %>
+<%= f.text_field :name %>
+<%= f.label :メールアドレス %>
+<%= f.text_field :email %>
+<%= f.label :自己紹介文 %>
+<%= f.text_area :introduction %>
+<%= f.submit "保存", class: "btn-primary" %>
+<%end%>

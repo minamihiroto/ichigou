@@ -1,0 +1,6 @@
+<% @recruits.each do |recruit| %>
+  <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+  <%= recruit.text %>
+  <%= recruit.place %>
+  <%= link_to(recruit.organizer.name, "/organizers/#{recruit.organizer.id}") %>
+<% end %>
