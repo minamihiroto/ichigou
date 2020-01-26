@@ -1,10 +1,10 @@
 <h1>新規投稿</h1>
 <%= form_with url: recruits_path do |f| %>
-<p>タイトル</p>
-<textarea name="title"></textarea>
-<p>本文</p>
-<textarea name="text"></textarea>
-<p>場所</p>
-<textarea name="place"></textarea>
-<input type="submit" value="投稿">
+<%= f.label :タイトル %>
+<%= f.text_field :title %>
+<%= f.label :本文 %>
+<%= f.text_area :text %>
+<%= f.label :場所 %>
+<%= f.text_area :place %>
+<%= f.submit "投稿", class: "btn-primary" %>
 <%end%>
