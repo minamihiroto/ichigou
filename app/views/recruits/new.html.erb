@@ -1,0 +1,11 @@
+<h1>新規投稿</h1>
+<%= form_with url: recruits_path do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+<%= f.label :タイトル %>
+<%= f.text_field :title %>
+<%= f.label :本文 %>
+<%= f.text_area :text %>
+<%= f.label :場所 %>
+<%= f.text_area :place %>
+<%= f.submit "投稿", class: "btn-primary" %>
+<%end%>

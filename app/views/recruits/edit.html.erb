@@ -1,0 +1,10 @@
+<h1>編集</h1>
+<%= form_with model: @recruit do |f|%>
+<%= f.label :タイトル %>
+<%= f.text_field :title %>
+<%= f.label :本文 %>
+<%= f.text_area :text %>
+<%= f.label :場所 %>
+<%= f.text_area :place %>
+<%= f.submit "投稿", class: "btn-primary" %>
+<%end%>
