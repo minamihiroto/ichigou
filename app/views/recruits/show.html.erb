@@ -1,8 +1,28 @@
+<div class="recruits-show-item"> 
+  <div class="recruits-show-title">
     <%= @recruit.title %>
+  </div>
+  <div class="recruits-show-text">
     <%= @recruit.text %>
+  </div>
+  <div class="recruits-show-place">
     <%= @recruit.place %>
+  </div>
+  <div class="recruits-show-image">
+    <% if @recruit.image? %>
+      <%= image_tag @recruit.image.url, :size =>'410x300' %>
+    <% end %>
+  </div>
     <%= link_to(@organizer.name, "/organizers/#{@organizer.id}") %>
-  <% if @organizer.id == @current_organizer.id %>
+</div>
+    <%if @current_participant != nil && Application.find_by(participants_id: @current_participant.id, recruits_id: @recruit.id) %>
+      <%= link_to("応募完了", "/applications/#{@recruit.id}/destroy", {method: "post"}) %>
+    <%elsif @current_participant == nil %>
+    <%else%>
+      <%=link_to("応募", "/applications/#{@recruit.id}/create", {method: "post"})%>
+    <%end%>
+
+  <% if @current_organizer != nil && @organizer.id == @current_organizer.id %>
     <%= link_to("編集", edit_recruit_path) %>
     <%= link_to("削除", recruit_path,{method: "DELETE"}) %>
   <%end%>

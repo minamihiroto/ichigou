@@ -1,13 +1,14 @@
-<h1>ユーザー名</h1>
+<h1>プロフィール</h1>
 <%= @organizer.name %>
 <%= @organizer.email %>
 <%= @organizer.introduction %>
-
-<% if @organizer.id == @current_organizer.id %>
+<% if @organizer.image? %>
+  <%= image_tag @organizer.image.url, :size =>'50x50' %>
+<% end %>
+<% if @current_organizer != nil && @organizer.id == @current_organizer.id %>
   <%= link_to("編集", edit_organizer_path) %>
   <%= link_to("退会", organizer_path,{method: "DELETE"}) %>
 <%end%>
-
 <% @organizer.recruits.each do |recruit|%>
   <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
 <%end%>

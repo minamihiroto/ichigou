@@ -1,6 +1,6 @@
 class OrganizersController < ApplicationController
 
-  before_action :authenticate_organizer,{only:[:index, :show, :edit, :update]}
+  before_action :authenticate_consumer,{only:[:index, :show, :edit, :update]}
   before_action :forbid_login_organizer,{only:[:new, :create, :login_form, :login]}
   before_action :ensure_correct_organizer,{only: [:edit, :update]}
 
@@ -17,14 +17,13 @@ class OrganizersController < ApplicationController
   end
 
   def create
-    @organizer = Organizer.new(name: params[:name],email: params[:email],password: params[:password])
+    @organizer = Organizer.new(image: params[:image],name: params[:name],email: params[:email],password: params[:password])
     if @organizer.save
       session[:organizer_id] = @organizer.id
       flash[:notice] = "登録されました"
       redirect_to recruits_path
     else
-      flash[:notice] = "名前とメールアドレスを記載してください"
-      redirect_to new_organizer_path
+      render 'new'
     end
   end
 
@@ -34,12 +33,11 @@ class OrganizersController < ApplicationController
     
   def update
     @organizer = Organizer.find_by(id: params[:id])
-    if @organizer.update(name: params[:name],email: params[:email],introduction: params[:introduction])
+    if @organizer.update(organizer_params)
       flash[:notice] = "プロフィールが編集されました"
       redirect_to organizer_path
     else
-      flash[:notice] = "名前とメールアドレス、自己紹介文を記載してください"
-      redirect_to edit_organizer_path
+      render 'edit'
     end
   end
 
@@ -60,8 +58,8 @@ class OrganizersController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to recruits_path
    else
-      flash[:notice] = "メールアドレスかパスワードが間違っています"
-      redirect_to organizers_login_path
+    flash[:notice] = "メールアドレスかパスワードが間違っています"
+    redirect_to organizers_login_path
     end
   end
 
@@ -78,4 +76,7 @@ class OrganizersController < ApplicationController
     end
   end
 
+  def organizer_params
+    params.require(:organizer).permit(:name,:email,:introduction,:image)
+  end
 end

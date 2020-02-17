@@ -1,6 +1,9 @@
-<%= form_with url: organizers_path do |f| %>
+<%= form_with url: organizers_path, local: true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 <%= f.label :ユーザー名 %>
 <%= f.text_field :name %>
+<%= f.label :画像 %>
+<%= f.file_field :image %>
 <%= f.label :メールアドレス %>
 <%= f.text_field :email %>
 <%= f.label :パスワード %>

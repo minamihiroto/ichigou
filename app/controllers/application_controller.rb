@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
     @current_participant = Participant.find_by(id: session[:participant_id])
   end
 
-  def authenticate_organizer
-    if @current_organizer == nil            
+  def authenticate_consumer
+    unless @current_organizer != nil || @current_participant != nil
      flash[:notice] = "ログインが必要です"
      redirect_to organizers_login_path
     end

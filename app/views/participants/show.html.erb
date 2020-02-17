@@ -2,7 +2,10 @@
 <%= @participant.name %>
 <%= @participant.email %>
 <%= @participant.introduction %>
-
+<% if @participant.image? %>
+  <%= image_tag @participant.image.url, :size =>'50x50' %>
+<% end %>
+<%= link_to("応募完了一覧", "/participants/#{@participant.id}/applications") %>
 <% if @participant.id == @current_participant.id %>
   <%= link_to("編集", edit_participant_path) %>
   <%= link_to("退会", participant_path,{method: "DELETE"}) %>

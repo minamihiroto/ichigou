@@ -1,0 +1,74 @@
+.recruits-index-item{
+  display: inline-block;     
+  background-color:  #ffffff;   
+  padding:  30px;
+  margin: 0px 400px 50px 400px;
+  height: 150px; 
+  box-shadow: 0 2px 12px #c1ced7;
+  display:block;
+}
+
+.recruits-index-title a{
+  font-size: 35px;
+  margin: 0px 400px 0px 400px;
+  text-decoration:none;
+  color:rgb(224, 140, 61);
+}
+
+.recruits-index-title a:hover{
+  color:rgb(233, 186, 132);
+}
+
+.recruits-index-text{
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.recruits-index-name a{
+  font-size: 20px;
+  text-decoration:none;
+  color:rgb(71, 71, 71);
+}
+
+.recruits-index-name a:hover{
+  color: rgb(211, 211, 211);
+}
+
+.recruits-index-place{
+  color: rgb(167, 167, 167);
+}
+
+.recruits-show-item{
+  padding:  30px;
+  margin: 20px 300px 20px 450px;
+}
+
+.recruits-show-title{
+  font-size: 60px;
+}
+
+.recruits-show-place{
+  font-size: 25px;
+  color: rgb(110, 109, 109);
+}
+
+.recruits-show-item a{
+  font-size: 20px;
+  text-decoration:none;
+  color:rgb(71, 71, 71);
+}
+
+.recruits-show-item a:hover{
+  color: rgb(211, 211, 211);
+}
+
+.recruits-index-image{
+  margin: 0px 400px 0px 400px;
+}
+
+.recruits-show-image{
+
+}
