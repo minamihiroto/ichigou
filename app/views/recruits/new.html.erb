@@ -1,8 +1,10 @@
 <h1>新規投稿</h1>
-<%= form_with url: recruits_path do |f| %>
+<%= form_with url: recruits_path, local: true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 <%= f.label :タイトル %>
 <%= f.text_field :title %>
+<%= f.label :画像 %>
+<%= f.file_field :image %>
 <%= f.label :本文 %>
 <%= f.text_area :text %>
 <%= f.label :場所 %>

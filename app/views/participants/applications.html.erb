@@ -1,0 +1,5 @@
+<% @applications.each do |application| %>
+  <% recruit = Recruit.find_by(id: application.recruits_id)%>
+  <%= link_to(recruit.organizer.name, "/organizers/#{recruit.organizer.id}") %>
+  <%= link_to(recruit.text, "/recruits/#{recruit.id}") %>
+<% end%>

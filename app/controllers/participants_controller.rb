@@ -1,6 +1,6 @@
 class ParticipantsController < ApplicationController
 
-  before_action :authenticate_participant,{only:[:index, :show, :edit, :update]}
+  before_action :authenticate_participant,{only:[:show, :edit, :update]}
   before_action :forbid_login_participant,{only:[:new, :create, :login_form, :login]}
   before_action :ensure_correct_participant,{only: [:edit, :update]}
 
@@ -13,14 +13,13 @@ class ParticipantsController < ApplicationController
   end
 
   def create
-    @participant = Participant.new(name: params[:name],email: params[:email],password: params[:password])
+    @participant = Participant.new(image: params[:image],name: params[:name],email: params[:email],password: params[:password])
     if @participant.save
       session[:participant_id] = @participant.id
       flash[:notice] = "登録されました"
       redirect_to recruits_path
     else
-      flash[:notice] = "名前とメールアドレスを記載してください"
-      redirect_to new_participant_path
+      render 'new'
     end
   end
 
@@ -30,12 +29,11 @@ class ParticipantsController < ApplicationController
     
   def update
     @participant = Participant.find_by(id: params[:id])
-    if @participant.update(name: params[:name],email: params[:email],introduction: params[:introduction])
+    if @participant.update(participant_params)
       flash[:notice] = "プロフィールが編集されました"
       redirect_to participant_path
     else
-      flash[:notice] = "名前とメールアドレス、自己紹介文を記載してください"
-      redirect_to edit_participant_path
+      render 'edit'
     end
   end
 
@@ -56,8 +54,8 @@ class ParticipantsController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to recruits_path
    else
-      flash[:notice] = "メールアドレスかパスワードが間違っています"
-      redirect_to participants_login_path
+    flash[:notice] = "メールアドレスかパスワードが間違っています"
+    redirect_to participants_login_path
     end
   end
 
@@ -67,6 +65,11 @@ class ParticipantsController < ApplicationController
     redirect_to participants_login_path
   end
 
+  def applications
+    @participant = Participant.find_by(id: params[:id])
+    @applications = Application.where(participants_id: @participant.id)
+  end
+
   def ensure_correct_participant           
     if @current_participant.id != params[:id].to_i            
       flash[:notice] = "権限がありません"            
@@ -74,4 +77,7 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def participant_params
+    params.require(:participant).permit(:name,:email,:introduction,:image)
+  end
 end

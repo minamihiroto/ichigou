@@ -1,7 +1,7 @@
-<%= form_with url: participants_login_path do |f| %>
-<p>メールアドレス</p>
-<input name="email">
-<p>パスワード</p>
-<input type="password" name="password" %>
-<input type="submit" value="ログイン">
+<%= form_with url: participants_login_path, local: true do |f| %>
+<%= f.label :メールアドレス %>
+<%= f.text_field :email %>
+<%= f.label :パスワード %>
+<%= f.text_field :password %>
+<%= f.submit "ログイン", class: "btn-primary" %>
 <%end%>

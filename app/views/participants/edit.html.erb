@@ -1,10 +1,13 @@
-<%= form_with model: @participant do |f|%>
 <h1>編集</h1>
-<p>名前</p>
-<input name="name"><%= @participant.name %>
-<p>メールアドレス</p>
-<input name="email"><%= @participant.email %>
-<p>自己紹介文</p>
-<textarea name="introduction"><%= @participant.introduction %></textarea>
-<input type="submit" value="保存">
+<%= form_with model: @participant, local: true do |f|%>
+<%= render 'layouts/error_messages', model: f.object %>
+<%= f.label :ユーザー名 %>
+<%= f.text_field :name %>
+<%= f.label :画像 %>
+<%= f.file_field :image %>
+<%= f.label :メールアドレス %>
+<%= f.text_field :email %>
+<%= f.label :自己紹介文 %>
+<%= f.text_area :introduction %>
+<%= f.submit "保存", class: "btn-primary" %>
 <%end%>

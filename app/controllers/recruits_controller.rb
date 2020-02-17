@@ -1,10 +1,14 @@
 class RecruitsController < ApplicationController
 
-  before_action :authenticate_organizer,{only:[:new, :show, :edit, :update,:create,:destroy]}
+  before_action :authenticate_consumer,{only:[:new, :show, :edit, :update,:create,:destroy]}
   before_action :ensure_correct_organizer,{only:[:edit, :update,:destroy]}
   
   def index
-    @recruits = Recruit.order(created_at: :desc)
+    if params[:title].present?
+      @recruits = Recruit.where('title LIKE ?', "%#{params[:title]}%")
+    else
+      @recruits = Recruit.all.order(created_at: :desc)
+    end
   end
   
   def show
@@ -17,13 +21,12 @@ class RecruitsController < ApplicationController
   end
 
   def create
-    @recruit = Recruit.new(title: params[:title],text: params[:text],place: params[:place],organizer_id: @current_organizer.id)
+    @recruit = Recruit.new(image: params[:image],title: params[:title],text: params[:text],place: params[:place],organizer_id: @current_organizer.id)
     if @recruit.save
       flash[:notice] = "ライブ募集が投稿されました"
       redirect_to recruits_path
     else
-      flash[:notice] = "タイトルか本文、住所が記載されていません"
-      redirect_to new_recruit_path
+      render 'new'
     end
   end
 
@@ -33,12 +36,11 @@ class RecruitsController < ApplicationController
   
   def update
     @recruit = Recruit.find_by(id: params[:id])
-    if @recruit.update(title: params[:title],text: params[:text],place: params[:place])
+    if @recruit.update(recruit_params)
       flash[:notice] = "ライブ募集が編集されました"
       redirect_to recruits_path
     else
-      flash[:notice] = "タイトルか本文、住所が記載されていません"
-      redirect_to edit_recruit_path
+      render 'edit'
     end
   end
 
@@ -55,5 +57,9 @@ class RecruitsController < ApplicationController
     flash[:notice] = "権限がありません"
     redirect_to recruits_path
     end
+  end
+
+  def recruit_params
+    params.require(:recruit).permit(:title,:text,:place,:image)
   end
 end
