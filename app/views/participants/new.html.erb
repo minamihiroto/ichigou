@@ -1,12 +1,15 @@
-<%= form_with url: participants_path, local: true do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
-<%= f.label :ユーザー名 %>
-<%= f.text_field :name %>
-<%= f.label :画像 %>
-<%= f.file_field :image %>
-<%= f.label :メールアドレス %>
-<%= f.text_field :email %>
-<%= f.label :パスワード %>
-<%= f.text_field :password %>
-<%= f.submit "芸人新規登録", class: "btn-primary" %>
-<%end%>
+<div class="login">
+  <h2 class="login-header">たくさんの舞台が君を待ってる！</h2>
+  <div class="login-container">
+    <%= form_with url: participants_path, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <p><%= f.label :ユーザー名 %>
+      <%= f.text_field :name %></p>
+      <p><%= f.label :メールアドレス %>
+      <%= f.text_field :email %></p>
+      <p><%= f.label :パスワード %>
+      <%= f.text_field :password %></p>
+      <p><%= f.submit "芸人新規登録", class: "btn-primary" %></p>
+    <%end%>
+  </div>
+</div>

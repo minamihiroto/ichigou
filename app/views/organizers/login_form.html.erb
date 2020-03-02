@@ -1,7 +1,12 @@
-<%= form_with url: organizers_login_path, local: true do |f| %>
-<%= f.label :メールアドレス %>
-<%= f.text_field :email %>
-<%= f.label :パスワード %>
-<%= f.text_field :password %>
-<%= f.submit "ログイン", class: "btn-primary" %>
-<%end%>
+<div class="login">
+  <h2 class="login-header">主催者側ログイン</h2>
+  <div class="login-container">
+    <%= form_with url: organizers_login_path, local: true do |f| %>
+      <p><%= f.label :メールアドレス %>
+      <%= f.text_field :email %></p>
+      <p><%= f.label :パスワード %>
+      <%= f.text_field :password %></p>
+      <p><%= f.submit "ログイン", class: "btn-primary" %></p>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+.login{
+  width: 50%;
+  margin: 10% auto 5% auto;
+}
+
+.login-header {
+  background: rgb(255, 123, 0);
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="submit"] {
+  background: rgb(255, 123, 0);
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+  background: rgb(233, 186, 132);
+}
+
+.login p {
+  padding: 12px;
+}

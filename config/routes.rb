@@ -15,4 +15,6 @@ get "participants/:id/applications" => "participants#applications"
 resources :organizers
 resources :recruits
 resources :participants
+
+root 'recruits#index'
 end

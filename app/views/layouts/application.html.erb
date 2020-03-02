@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ichigou</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>fukusyou</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <header>
-       <% if @current_organizer %>
-         <%= link_to(@current_organizer.name, "/organizers/#{@current_organizer.id}") %>
-         <%= link_to("募集ライブ一覧", "/recruits") %>
-         <%= link_to("新規投稿", "/recruits/new") %>
-         <%= link_to("募集者一覧", "/organizers") %>
-         <%= link_to("ログアウト", "/organizers/logout", {method: :recruit}) %>
-       <% elsif @current_participant %>
-         <%= link_to(@current_participant.name, "/participants/#{@current_participant.id}") %>
-         <%= link_to("募集ライブ一覧", "/recruits") %>
-         <%= link_to("募集者一覧", "/organizers") %>
-         <%= link_to("ログアウト", "/participants/logout", {method: :recruit}) %>
-       <% else %>
-         <%= link_to("主催者新規登録", "/organizers/new") %>
-         <%= link_to("主催者ログイン", "/organizers/login") %>
-         <%= link_to("芸人新規登録", "/participants/new") %>
-         <%= link_to("芸人ログイン", "/participants/login") %>
-      <% end %>
-    </header>
-    <% if flash[:notice] %>
-      <%= flash[:notice]%>
-    <% end %>
+    <div class="layouts">
+      <header>
+        <div class="layouts-flash">
+          <% if flash[:notice] %>
+            <%= flash[:notice]%>
+          <% end %>
+        </div>
+        <% if @current_organizer %>
+          <li><%= link_to recruits_path do %> <%= image_tag "/images/fukusyou_logo.png", :size =>'200x50' %> <% end %></li>
+          <div class="layouts-profile">         
+            <li><%= link_to(@current_organizer.name, "/organizers/#{@current_organizer.id}") %></li>
+            <li><%= link_to("新規投稿", "/recruits/new") %></li>
+          </div>
+        <% elsif @current_participant %>
+          <li><%= link_to recruits_path do %> <%= image_tag "/images/fukusyou_logo.png", :size =>'200x50' %> <% end %></li>
+          <div class="layouts-profile">
+            <li><%= link_to(@current_participant.name, "/participants/#{@current_participant.id}") %></li>
+            <li><%= link_to("応募完了一覧", "/participants/#{@current_participant.id}/applications") %></li>
+          </div>
+        <% else %>
+          <li><%= link_to recruits_path do %> <%= image_tag "/images/fukusyou_logo.png", :size =>'200x50' %> <% end %></li>
+          <div class="layouts-profile">
+            <li><%= link_to("主催者新規登録", "/organizers/new") %></li>
+            <li><%= link_to("芸人新規登録", "/participants/new") %></li>
+            <li><%= link_to("主催者ログイン", "/organizers/login") %></li>
+            <li><%= link_to("芸人ログイン", "/participants/login") %></li>
+          </div>
+        <% end %>
+      </header>
+    </div>
     <%= yield %>
   </body>
 </html>

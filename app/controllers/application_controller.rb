@@ -18,13 +18,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_participant
-    if @current_participant == nil            
-     flash[:notice] = "ログインが必要です"
-     redirect_to participants_login_path
-    end
-  end
-
   def forbid_login_organizer
     if @current_organizer
       flash[:notice] = "すでにログインしています"

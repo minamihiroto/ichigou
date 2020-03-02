@@ -1,13 +1,34 @@
-<h1>編集</h1>
-<%= form_with model: @participant, local: true do |f|%>
-<%= render 'layouts/error_messages', model: f.object %>
-<%= f.label :ユーザー名 %>
-<%= f.text_field :name %>
-<%= f.label :画像 %>
-<%= f.file_field :image %>
-<%= f.label :メールアドレス %>
-<%= f.text_field :email %>
-<%= f.label :自己紹介文 %>
-<%= f.text_area :introduction %>
-<%= f.submit "保存", class: "btn-primary" %>
-<%end%>
+<div class="profile">
+  <div class="profile-title">
+    編集
+  </div>
+  <%= form_with model: @participant, local: true do |f|%>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="profile-image">
+      <% if @participant.image? %>
+        <%= image_tag @participant.image.url, :size =>'100x100' %>
+      <% end %>
+    </div>
+    <div class="profile-image-after">
+      <%= f.label :画像 %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="profile-image-delete">
+      <%= f.label :以前の画像を削除する %>
+      <%= f.check_box :remove_image %>
+    </div>
+    <div class="profile-name">
+      <%= f.label :ユーザー名 %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="profile-email">
+      <%= f.label :メールアドレス %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="profile-introduction">
+      <%= f.label :自己紹介文 %>
+      <%= f.text_area :introduction %>
+    </div>
+    <%= f.submit "保存", class: "btn-primary" %>
+  <%end%>
+</div>

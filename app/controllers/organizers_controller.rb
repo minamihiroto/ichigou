@@ -20,7 +20,7 @@ class OrganizersController < ApplicationController
     @organizer = Organizer.new(image: params[:image],name: params[:name],email: params[:email],password: params[:password])
     if @organizer.save
       session[:organizer_id] = @organizer.id
-      flash[:notice] = "登録されました"
+      flash[:notice] = "初めまして！さっそく新規投稿から募集を始めてみよう！"
       redirect_to recruits_path
     else
       render 'new'
@@ -77,6 +77,6 @@ class OrganizersController < ApplicationController
   end
 
   def organizer_params
-    params.require(:organizer).permit(:name,:email,:introduction,:image)
+    params.require(:organizer).permit(:name,:email,:introduction,:image,:image_cache,:remove_image)
   end
 end

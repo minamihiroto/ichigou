@@ -1,12 +1,28 @@
-<h1>ユーザー名</h1>
-<%= @participant.name %>
-<%= @participant.email %>
-<%= @participant.introduction %>
-<% if @participant.image? %>
-  <%= image_tag @participant.image.url, :size =>'50x50' %>
-<% end %>
-<%= link_to("応募完了一覧", "/participants/#{@participant.id}/applications") %>
-<% if @participant.id == @current_participant.id %>
-  <%= link_to("編集", edit_participant_path) %>
-  <%= link_to("退会", participant_path,{method: "DELETE"}) %>
-<%end%>
+<div class="profile">
+  <div class="profile-title">
+    プロフィール
+  </div>
+  <div class="profile-image">
+    <% if @participant.image? %>
+      <%= image_tag @participant.image.url, :size =>'50x50' %>
+    <% end %>
+  </div>
+  <div class="profile-name">
+    <%= @participant.name %>
+  </div>
+  <div class="profile-email">
+    <%= @participant.email %>
+  </div>
+  <div class="profile-introduction">
+    <%= @participant.introduction %>
+  </div>
+  <% if @current_participant != nil && @participant.id == @current_participant.id %>
+    <div class="profile-edit-button">
+      <%= link_to("編集", edit_participant_path) %>
+    </div>
+    <div class="profile-logout">
+      <%= link_to("ログアウト", "/participants/logout", {method: :recruit}) %>
+      <!--<%= link_to("退会", participant_path,{method: "DELETE"}) %>-->
+    </div>
+  <%end%>
+</div>

@@ -1,0 +1,78 @@
+.recruits-form-title{
+  font-size: 37px;
+  margin-bottom: 8%;
+}
+
+.recruits-form-title input{
+  width: 50%;
+  padding: 15px;
+  font-size:25px;
+}
+
+.recruits-form-image{
+  font-size: 30px;
+  margin: 3% 0% 3% 10%;
+}
+
+.recruits-form-image input{
+  font-size: 20px;
+  margin-left: 10px;
+  width: 75%;
+}
+
+.recruits-form-image p{
+  font-size: medium;
+  margin-left: -10%;
+  color: rgb(68, 68, 68);
+}
+
+.recruits-form-image p input{
+  width: 14px;
+}
+
+.recruits-form-text,.recruits-form-place{
+  width: 80%;
+  margin: auto;
+  white-space: pre-wrap;
+  font-size: 30px;
+}
+.recruits-form-text label,.recruits-form-place label{
+  float: left;
+}
+
+.recruits-form-text textarea{
+  width: 100%;
+  height: 300px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.recruits-form-place textarea{
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.recruits-form-btn input[type="submit"]{
+  cursor: pointer;
+  color: rgb(255, 123, 0);
+  transition: .4s;
+  font-size: 30px;
+  margin-top: 5%;
+  text-decoration: none;
+  background-color: rgb(254, 255, 255);
+}
+
+.recruits-form-btn input[type="submit"]:hover{
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 123, 0);
+}
+.recruits-form-btn-draft{
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.recruits-form-btn-public{
+  display: inline-block;
+}

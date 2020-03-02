@@ -1,17 +1,17 @@
-<% if @recruit !=nil && @recruit.errors.any? %>
-      <% @recruit.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-<% end %>
-
-<% if @organizer !=nil && @organizer.errors.any? %>
-      <% @organizer.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-<% end %>
-
-<% if @participant !=nil && @participant.errors.any? %>
-      <% @participant.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-<% end %>
+<div class="layouts-errors">
+  <% if @recruit !=nil && @recruit.errors.any? %>
+    <% @recruit.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  <% if @organizer !=nil && @organizer.errors.any? %>
+    <% @organizer.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  <% if @participant !=nil && @participant.errors.any? %>
+    <% @participant.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+</div>

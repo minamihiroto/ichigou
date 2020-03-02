@@ -1,0 +1,91 @@
+.recruits-show{
+  font-family: arial;
+  text-align: center;
+  width: 40%;
+  padding: 30px;
+  margin-bottom: 5%;
+  margin: 100px auto 75px auto;
+  box-shadow: 0px 1px 4px rgb(71, 71, 71);
+}
+
+.recruits-show-title{
+  display: inline-block;
+  font-size: 50px;
+  text-decoration:none;
+  color:rgb(224, 140, 61);
+}
+
+.recruits-show-image{
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
+.recruits-show-text{
+  font-size: 25px;
+  white-space: pre-wrap;
+}
+
+.recruits-show-place{
+  font-size: 20px;
+  color: rgb(83, 83, 83);
+  margin-top: 5%;
+}
+
+.recruits-show-organizer{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.recruits-show-organizer a{
+  font-size: 40px;
+  color: rgb(255, 123, 0);
+  text-decoration: none;
+  border: solid 2px rgb(224, 140, 61);
+  transition: .5s;
+  padding: 10px 18px 10px 18px;
+}
+
+.recruits-show-organizer a:hover{
+  color: white;
+  background-color: rgb(255, 123, 0);
+}
+
+.recruits-show-app-participant{
+  margin-top: 100px;
+}
+
+.recruits-show-app-participant a{
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  border: solid 2px black;
+  padding: 5%;
+}
+
+.recruits-show-app-participant a:hover{
+  color: white;
+  border: solid 2px rgb(255, 123, 0);
+  background-color: rgb(255, 123, 0);
+  transition: .5s;
+}
+
+.recruits-show-app-organizer{
+  font-size: 25px;
+  padding: 10% 0%;
+  font-weight: bold;
+  color: rgb(255, 123, 0);
+}
+
+.recruits-show-app-organizer p{
+  margin-top: 0%;
+}
+
+.recruits-show-app-organizer a{
+  color: black;
+  margin: 0px 2%;
+}
+
+.recruits-show-app-organizer a:hover{
+  color: rgb(255, 123, 0);
+}

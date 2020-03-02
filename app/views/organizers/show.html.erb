@@ -1,14 +1,70 @@
-<h1>プロフィール</h1>
-<%= @organizer.name %>
-<%= @organizer.email %>
-<%= @organizer.introduction %>
-<% if @organizer.image? %>
-  <%= image_tag @organizer.image.url, :size =>'50x50' %>
-<% end %>
-<% if @current_organizer != nil && @organizer.id == @current_organizer.id %>
-  <%= link_to("編集", edit_organizer_path) %>
-  <%= link_to("退会", organizer_path,{method: "DELETE"}) %>
-<%end%>
-<% @organizer.recruits.each do |recruit|%>
-  <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
-<%end%>
+<div class="profile">
+    <div class="profile-title">
+      プロフィール
+    </div>
+    <div class="profile-image">
+      <% if @organizer.image? %>
+        <%= image_tag @organizer.image.url, :size =>'100x100' %>
+      <% end %>
+    </div>
+    <div class="profile-name">
+      <%= @organizer.name %>
+    </div>
+    <div class="profile-email">
+      <p>メールアドレス</p><%= @organizer.email %>
+    </div>
+    <div class="profile-introduction">
+      <p>自己紹介</p><%= @organizer.introduction %>
+    </div>
+  <% if @current_organizer != nil && @organizer.id == @current_organizer.id %>
+    <div class="profile-edit-button">
+      <%= link_to("編集", edit_organizer_path) %>
+    </div>
+    <div class="profile-logout">
+      <%= link_to("ログアウト", "/organizers/logout", {method: :recruit}) %>
+      <!--<%= link_to("退会", organizer_path,{method: "DELETE"}) %>-->
+    </div>
+  <%end%>
+  <div class="profile-recruits">
+    <% recruits_draft = Recruit.where(organizer_id: @organizer.id, status: true) %>
+    <% recruits_publish = Recruit.where(organizer_id: @organizer.id, status: false) %>
+    <% if session[:organizer_id] == @organizer.id && recruits_draft.present? && recruits_publish.present? %>
+      <div class="profile-recruit-status">
+        下書きが残っています。投稿を公開しよう!
+      </div>
+      <% recruits_draft.each do |recruit| %>
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      <% end %>
+      <div class="profile-recruit-status">
+        公開済み
+      </div>
+      <% recruits_publish.each do |recruit| %>
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      <% end %>
+    <% elsif session[:organizer_id] == @organizer.id && recruits_draft.present? && recruits_publish.empty? %>
+      <div class="profile-recruit-status">
+        下書きが残っています。投稿を公開しよう！
+      </div>
+      <% recruits_draft.each do |recruit| %>
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      <% end %>
+    <% elsif session[:organizer_id] == @organizer.id && recruits_draft.empty? && recruits_publish.present? %>
+      <div class="profile-recruit-status">
+        公開済み
+      </div>
+      <% recruits_publish.each do |recruit| %>
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      <% end %>
+    <% elsif session[:organizer_id] == @organizer.id && recruits_draft.empty? && recruits_publish.empty? %>
+      <div class="profile-recruit-not-yet">
+        投稿はありません。投稿しよう！
+      </div>
+    <% elsif (session[:organizer_id] != @organizer.id && recruits_draft.present? && recruits_publish.present?) || (session[:organizer_id] != @organizer.id && recruits_draft.empty? && recruits_publish.present?) %>
+      <% recruits_publish.each do |recruit| %>
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      <% end %>
+    <% else %>
+      <div class="profile-recruit-notyet">投稿はありません。</div>
+    <% end %>
+  </div>
+</div>

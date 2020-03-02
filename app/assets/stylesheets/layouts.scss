@@ -1,0 +1,45 @@
+.layouts header{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.layouts header li{
+  display: inline;
+  margin-left: 10px;
+  float:  left;
+}
+
+.layouts-profile li{
+  list-style: none;
+  float: right !important;
+  margin-right: 120px;
+  margin-top: 10px;
+}
+
+.layouts-profile li a{
+  text-decoration: none ;
+  color: rgb(100, 100, 100);
+  font-size: 25px;
+}
+
+.layouts-profile li a:hover{
+  color: rgb(255, 123, 0);
+}
+
+.layouts-flash{
+  color: rgb(255, 255, 255);
+  background: rgb(255, 123, 0);
+  text-align: center;
+  font-size: 150%;
+}
+
+.layouts-errors{
+  color: red;
+  font-weight: bold;
+  white-space: pre-wrap;
+}

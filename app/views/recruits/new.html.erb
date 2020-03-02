@@ -1,13 +1,30 @@
-<h1>新規投稿</h1>
-<%= form_with url: recruits_path, local: true do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
-<%= f.label :タイトル %>
-<%= f.text_field :title %>
-<%= f.label :画像 %>
-<%= f.file_field :image %>
-<%= f.label :本文 %>
-<%= f.text_area :text %>
-<%= f.label :場所 %>
-<%= f.text_area :place %>
-<%= f.submit "投稿", class: "btn-primary" %>
-<%end%>
+<div class="recruits-show">
+  <h1>新規投稿</h1>
+  <%= form_with url: recruits_path, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+    <div class="recruits-form-title">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="recruits-form-image">
+      <%= f.label :画像 %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="recruits-form-text">
+      <%= f.label :本文 %>
+      <%= f.text_area :text %>
+    </div>
+    <div class="recruits-form-place">
+      <%= f.label :場所 %>
+      <%= f.text_area :place %>
+    </div>
+    <div class="recruits-form-btn">
+      <div class="recruits-form-btn-draft">
+        <%= f.submit "下書き" , name: "draft_button" %>
+      </div>
+      <div class="recruits-form-btn-public"> 
+        <%= f.submit "投稿" %>
+      </div>
+    </div>
+  <%end%>
+</div>

@@ -1,27 +1,36 @@
-<p>タイトル検索</p>
-<%= form_with url: recruits_path, method: :get, local: true do |f| %>
-  <%= f.text_field :title %>
-  <%= f.submit "検索", :class=>"search"%>
-<% end %>
-<% @recruits.each do |recruit| %>
-  <div class="recruits-index-title">
-    <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
-  </div>  
-  <div class="recruits-index-image">
-    <% if recruit.image? %>
-      <%= image_tag recruit.image.url, :size =>'624x300' %>
+<div class="recruits-index">
+  <div class="recruits-index-top">
+    <h1>『福笑』は舞台を探しているお笑い芸人、お笑い芸人を探しているオーナーをより簡単にマッチングします。</h1>
+    <%= form_with url: recruits_path, method: :get, local: true do |f| %>
+      <%= f.text_field :title, :placeholder => "タイトル検索"%>
+      <%= f.submit "検索", :class=>"search"%>
     <% end %>
-  </div> 
-  <div class="recruits-index-item">
-    <div class="recruits-index-text">
-     <%= recruit.text %>
-    </div>
-    <div class="recruits-index-place">
-      <%= recruit.place %>
-    </div>
-    <div class="recruits-index-name">
-      <%= link_to(recruit.organizer.name, "/organizers/#{recruit.organizer.id}") %>
-    </div>
   </div>
-  <hr width="650">
-<% end %>
+  <div class="recruits-index-item">
+    <% @recruits.each do |recruit| %>
+      <div class="recruits-index-title">
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      </div>
+      <div class="recruits-index-image">
+        <% if recruit.image? %>
+          <%= image_tag recruit.image.url, :size =>'624x300' %>
+        <% end %>
+      </div> 
+      <div class="recruits-index-box">
+        <div class="recruits-index-text">
+          <%= recruit.text %>
+        </div>
+        <div class="recruits-index-place">
+          <%= recruit.place %>
+        </div>
+        <div class="recruits-index-name">
+          <%= link_to(recruit.organizer.name, "/organizers/#{recruit.organizer.id}") %>
+        </div>
+      </div>
+    <hr width="100%">
+    <% end %>
+  </div>
+  <div class="recruits-index-paginate">
+    <%= will_paginate @recruits,:previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+  </div>
+</div>

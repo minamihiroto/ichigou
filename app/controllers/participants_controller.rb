@@ -1,6 +1,6 @@
 class ParticipantsController < ApplicationController
 
-  before_action :authenticate_participant,{only:[:show, :edit, :update]}
+  before_action :authenticate_consumer,{only:[:index,:show, :edit, :update]}
   before_action :forbid_login_participant,{only:[:new, :create, :login_form, :login]}
   before_action :ensure_correct_participant,{only: [:edit, :update]}
 
@@ -16,7 +16,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new(image: params[:image],name: params[:name],email: params[:email],password: params[:password])
     if @participant.save
       session[:participant_id] = @participant.id
-      flash[:notice] = "登録されました"
+      flash[:notice] = "初めまして！さっそくライブを探してみよう！"
       redirect_to recruits_path
     else
       render 'new'
@@ -67,7 +67,7 @@ class ParticipantsController < ApplicationController
 
   def applications
     @participant = Participant.find_by(id: params[:id])
-    @applications = Application.where(participants_id: @participant.id)
+    @applications = Application.where(participants_id: @participant.id).order(created_at: :desc)
   end
 
   def ensure_correct_participant           
@@ -78,6 +78,6 @@ class ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:name,:email,:introduction,:image)
+    params.require(:participant).permit(:name,:email,:introduction,:image,:image_cache,:remove_image)
   end
 end

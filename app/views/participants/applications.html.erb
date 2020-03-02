@@ -1,5 +1,26 @@
-<% @applications.each do |application| %>
-  <% recruit = Recruit.find_by(id: application.recruits_id)%>
-  <%= link_to(recruit.organizer.name, "/organizers/#{recruit.organizer.id}") %>
-  <%= link_to(recruit.text, "/recruits/#{recruit.id}") %>
-<% end%>
+<div class="recruits-index-item">
+  <h1>応募完了一覧</h1>
+  <% @applications.each do |application| %>
+    <% recruit = Recruit.find_by(id: application.recruits_id)%>
+      <div class="recruits-index-title">
+        <%= link_to(recruit.title, "/recruits/#{recruit.id}") %>
+      </div>
+      <div class="recruits-index-image">
+        <% if recruit.image? %>
+          <%= image_tag recruit.image.url, :size =>'624x300' %>
+        <% end %>
+      </div> 
+      <div class="recruits-index-box">
+        <div class="recruits-index-text">
+          <%= recruit.text %>
+        </div>
+        <div class="recruits-index-place">
+          <%= recruit.place %>
+        </div>
+        <div class="recruits-index-name">
+          <%= link_to(recruit.organizer.name, "/organizers/#{recruit.organizer.id}") %>
+        </div>
+      </div>
+    <hr width="100%">
+  <% end %>
+</div>
