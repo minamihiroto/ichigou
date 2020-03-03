@@ -53,5 +53,5 @@ production:
   username: ichigou
   password: <%= ENV['ICHIGOU_DATABASE_PASSWORD'] %>
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8mb4
   pool: 5
