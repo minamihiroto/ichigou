@@ -31,6 +31,8 @@
     <% end %>
   </div>
   <div class="recruits-index-paginate">
-    <%= will_paginate @recruits,:previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+    <% if @recruits.length > 1 %>
+      <%= will_paginate @recruits,:previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+    <% end %>
   </div>
 </div>

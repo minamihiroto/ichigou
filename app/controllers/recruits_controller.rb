@@ -5,14 +5,14 @@ class RecruitsController < ApplicationController
   
   def index
     if params[:title].present?
-      @recruits = Recruit.where('title LIKE ?', "%#{params[:title]}%",status: false)
+      @recruits = Recruit.where('title LIKE ?', "%#{params[:title]}%").where(status: false)
     else
-      @recruits = Recruit.paginate(page: params[:page], per_page: 5).order(created_at: :desc).where(status: false)
+      @recruits = Recruit.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
     end
   end
   
   def show
-    @recruit = Recruit.find_by(id: params[:id])
+    @recruit = Recruit.find_by(id: params[:id]).where(status: false)
     @organizer = @recruit.organizer
     @participants_ids = Application.where(recruits_id: params[:id]).pluck(:participants_id)
     @applications = Participant.where(id: @participants_ids)
