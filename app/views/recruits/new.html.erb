@@ -18,7 +18,7 @@
     </div>
     <div class="recruits-form">
       <%= f.label :募集芸風 %>
-      <%= f.select :genre ,{ 漫才: "漫才" ,コント: "コント" ,ピン芸: "ピン芸" ,コンビ芸: "コンビ芸" ,その他: "その他" } %>
+      <%= f.select :genre ,{ 未定: "未定",漫才: "漫才" ,コント: "コント" ,ピン芸: "ピン芸" ,コンビ芸: "コンビ芸", なんでもOK: "なんでもOK" } %>
     </div>
     <div class="recruits-form">
       <%= f.label :募集要項 %>
@@ -34,7 +34,7 @@
     </div>
     <div class="recruits-form">
       <%= f.label :審査方法 %>
-      <%= f.select :judging ,{ お客様投票: "お客様投票" , 審査員投票: "審査員投票" , その他: "その他" } %>
+      <%= f.select :judging ,{ 未定: "未定",お客様投票: "お客様投票" , 審査員投票: "審査員投票" , なし: "なし" } %>
     </div>
     <div class="recruits-form">
       <%= f.label :賞金 %>
