@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_131738) do
+ActiveRecord::Schema.define(version: 2020_03_06_155605) do
 
   create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "participants_id"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 2020_02_20_131738) do
     t.string "image"
     t.integer "organizer_id"
     t.boolean "status", default: false, null: false
+    t.integer "capacity"
+    t.string "genre"
+    t.string "guidelines"
+    t.string "award"
+    t.integer "price"
+    t.string "judging"
+    t.date "schedule"
+    t.string "facility"
+    t.string "backstage"
+    t.string "url"
+    t.string "organization"
+    t.string "prefectures"
   end
 
 end

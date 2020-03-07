@@ -1,22 +1,74 @@
-<div class="recruits-show">
+<div class="recruits-show-form">
   <h1>新規投稿</h1>
   <%= form_with url: recruits_path, local: true do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-    <div class="recruits-form-title">
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="recruits-form">
       <%= f.label :タイトル %>
       <%= f.text_field :title %>
     </div>
-    <div class="recruits-form-image">
-      <%= f.label :画像 %>
-      <%= f.file_field :image %>
+    <div class="recruits-form">
+      <div class="recruits-form-image">
+        <%= f.label :画像 %>
+        <%= f.file_field :image %>
+      </div>
     </div>
-    <div class="recruits-form-text">
-      <%= f.label :本文 %>
-      <%= f.text_area :text %>
+    <div class="recruits-form">
+      <%= f.label :日程 %>
+      <%= f.date_field :schedule %>
     </div>
-    <div class="recruits-form-place">
-      <%= f.label :場所 %>
-      <%= f.text_area :place %>
+    <div class="recruits-form">
+      <%= f.label :募集芸風 %>
+      <%= f.select :genre ,{ 漫才: "漫才" ,コント: "コント" ,ピン芸: "ピン芸" ,コンビ芸: "コンビ芸" ,その他: "その他" } %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :募集要項 %>
+      <%= f.text_area :guidelines, :value => "なし" %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :参加代金 %>
+      <%= f.number_field :price, step: "100",min: "0", :value => 0 %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :おおよその客数 %>
+      <%= f.number_field :capacity, step: "10",min: "0", :value => 0 %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :審査方法 %>
+      <%= f.select :judging ,{ お客様投票: "お客様投票" , 審査員投票: "審査員投票" , その他: "その他" } %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :賞金 %>
+      <%= f.number_field :award, step: "1000",min: "0", :value => 0 %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :設備 %>
+      <%= f.text_area :facility, :value => "なし" %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :楽屋 %>
+      <%= f.select :backstage ,{ あり: "あり" , なし: "なし" } %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :主催団体 %>
+      <%= f.text_field :organization, :value => "なし" %>
+    </div>
+    <div class="recruits-form">
+      <div class="recruits-form-text">
+        <%= f.label :本文 %>
+        <%= f.text_area :text %>
+      </div>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :都道府県 %>
+      <%= f.select :prefectures ,{ 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県",沖縄県: "沖縄県" } %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :詳細場所 %>
+      <%= f.text_area :place, :value => "未定" %>
+    </div>
+    <div class="recruits-form">
+      <%= f.label :関連url %>
+      <%= f.text_field :url, :placeholder => "未記入でok" %>
     </div>
     <div class="recruits-form-btn">
       <div class="recruits-form-btn-draft">

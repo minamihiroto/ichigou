@@ -28,7 +28,7 @@ class RecruitsController < ApplicationController
   end
 
   def create
-    @recruit = Recruit.new(image: params[:image],title: params[:title],text: params[:text],place: params[:place],organizer_id: @current_organizer.id)
+    @recruit = Recruit.new(image: params[:image],title: params[:title],text: params[:text],place: params[:place],capacity: params[:capacity],genre: params[:genre],guidelines: params[:guidelines],award: params[:award],price: params[:price],judging: params[:judging],schedule: params[:schedule],facility: params[:facility],backstage: params[:backstage],url: params[:url],organization: params[:organization],prefectures: params[:prefectures],organizer_id: @current_organizer.id)
     if @recruit.save && params[:draft_button]
       flash[:notice] = "ライブ募集の下書きがされました"
       redirect_to recruits_path
@@ -72,6 +72,6 @@ class RecruitsController < ApplicationController
   end
 
   def recruit_params
-    params.require(:recruit).permit(:title,:text,:place,:image,:image_cache,:remove_image)
+    params.require(:recruit).permit(:title,:text,:place,:image,:image_cache,:remove_image,:capacity,:genre,:guidelines,:award,:price,:judging,:schedule,:facility,:backstage,:url,:organization,:prefectures)
   end
 end

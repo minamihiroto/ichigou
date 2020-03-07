@@ -7,12 +7,92 @@
       <%= image_tag @recruit.image.url, :size =>'410x300' %>
     <% end %>
   </div>
-  <div class="recruits-show-text">
-    <%= @recruit.text %>
+  <div class="recruits-show-element">
+    <div class="recruits-show-schedule">
+      <% if @recruit.schedule? %>
+        <p>開催日程</p>
+        <%= @recruit.schedule %>
+      <% end %>
+    </div>
   </div>
-  <div class="recruits-show-place">
-    <%= @recruit.place %>
+  <div class="recruits-show-element">
+    <div class="recruits-show-genre">
+      <p>募集芸風</p>
+      <%= @recruit.genre %>
+    </div>
   </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-guidelines">
+      <p>募集要項</p>
+      <%= @recruit.guidelines %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-price">
+      <p>参加代金</p>
+      <%= @recruit.price %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-capacity">
+      <p>おおよその客数</p>
+      <%= @recruit.capacity %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-judging">
+      <p>審査方法</p>
+      <%= @recruit.judging %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-award">
+      <p>賞金</p>
+      <%= @recruit.award %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-facility">
+      <p>設備</p>
+      <%= @recruit.facility %>
+    </div>
+  </div>  
+  <div class="recruits-show-element">  
+    <div class="recruits-show-backstage">
+      <p>楽屋</p>
+      <%= @recruit.backstage %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-organization">
+      <p>主催団体</p>
+      <%= @recruit.organization %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-text">
+      <%= @recruit.text %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-prefectures">
+      <%= @recruit.prefectures %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-place">
+      <p>詳細場所</p>
+     <%= @recruit.place %>
+    </div>
+  </div>
+  <div class="recruits-show-element">  
+    <div class="recruits-show-url">
+      <% if @recruit.url? %>
+        <p>関連url</p>
+        <%= @recruit.url %>
+      <% end %>
+    </div>
+  </div>  
   <div class="recruits-show-organizer">
     <%= link_to(@organizer.name, "/organizers/#{@organizer.id}") %>
    </div> 
