@@ -5,9 +5,9 @@ class RecruitsController < ApplicationController
   
   def index
     if params[:title].present?
-      @recruits = Recruit.where('title LIKE ?', "%#{params[:title]}%").paginate(page: params[:page], per_page: 5).order(created_at: :desc).where(status: false)
+      @recruits = Recruit.where('title LIKE ?', "%#{params[:title]}%").paginate(page: params[:page], per_page: 5).order(updated_at: :desc).where(status: false)
     else
-      @recruits = Recruit.paginate(page: params[:page], per_page: 5).order(created_at: :desc).where(status: false)
+      @recruits = Recruit.paginate(page: params[:page], per_page: 5).order(updated_at: :desc).where(status: false)
     end
   end
   
