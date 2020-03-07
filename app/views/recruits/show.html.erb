@@ -23,8 +23,10 @@
   </div>
   <div class="recruits-show-element">  
     <div class="recruits-show-guidelines">
-      <p>募集要項</p>
-      <%= @recruit.guidelines %>
+      <% if @recruit.guidelines? %>
+        <p>募集要項</p>
+        <%= @recruit.guidelines %>
+      <% end %>
     </div>
   </div>
   <div class="recruits-show-element">  
@@ -53,8 +55,10 @@
   </div>
   <div class="recruits-show-element">  
     <div class="recruits-show-facility">
-      <p>設備</p>
-      <%= @recruit.facility %>
+      <% if @recruit.facility? %>
+        <p>設備</p>
+        <%= @recruit.facility %>
+      <% end %>
     </div>
   </div>  
   <div class="recruits-show-element">  
@@ -65,8 +69,10 @@
   </div>
   <div class="recruits-show-element">  
     <div class="recruits-show-organization">
-      <p>主催団体</p>
-      <%= @recruit.organization %>
+      <% if @recruit.organization? %>
+        <p>主催団体</p>
+        <%= @recruit.organization %>
+      <% end %>
     </div>
   </div>
   <div class="recruits-show-element">  
@@ -81,8 +87,10 @@
   </div>
   <div class="recruits-show-element">  
     <div class="recruits-show-place">
-      <p>詳細場所</p>
-     <%= @recruit.place %>
+      <% if @recruit.place? %>
+        <p>詳細場所</p>
+        <%= @recruit.place %>
+      <% end %>
     </div>
   </div>
   <div class="recruits-show-element">  
