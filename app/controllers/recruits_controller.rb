@@ -48,8 +48,13 @@ class RecruitsController < ApplicationController
   
   def update
     @recruit = Recruit.find_by(id: params[:id])
-    if @recruit.update(recruit_params)
-      flash[:notice] = "ライブ募集が編集されました"
+    if @recruit.update(recruit_params) && params[:public_button]
+      flash[:notice] = "ライブ募集が投稿されました"
+      redirect_to recruits_path
+      @recruit.status = 0
+      @recruit.save
+    elsif @recruit.update(recruit_params)
+      flash[:notice] = "下書きが編集されました"
       redirect_to recruits_path
     else
       render 'edit'
