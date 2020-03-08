@@ -79,7 +79,7 @@
         <%= f.submit "下書き" %>
       </div>
       <div class="recruits-form-btn-public"> 
-        <%= f.submit "投稿", name: "public_button" %>
+        <%= f.submit "投稿", name: "public_button", data: { confirm: "投稿すると編集、削除ができません。"} %>
       </div>
     </div>
   <%end%>
