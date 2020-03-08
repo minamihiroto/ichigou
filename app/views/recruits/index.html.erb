@@ -6,6 +6,24 @@
       <%= f.submit "検索", :class=>"search"%>
     <% end %>
   </div>
+  <div class="recruits-index-explanation">
+    <h1>『福笑』でできること</h1>
+    <div class="logo">
+      <img src="/images/logo_1.png">
+      <h3>舞台の検索</h3>
+      <p>タイトル検索で気になるライブを探し出すことができる！</p>
+    </div>
+    <div class="logo">
+      <img src="/images/logo_2.png">
+      <h3>舞台の応募</h3>
+      <p>舞台に応募して主催者からの連絡を待とう！（芸人側機能限定）</p>
+    </div>
+    <div class="logo">
+      <img src="/images/logo_3.png">
+      <h3>舞台の投稿</h3>
+      <p>芸人を募集するために舞台要項を投稿しよう！（主催者側機能限定）</p>
+    </div>
+  </div>
   <div class="recruits-index-item">
     <% @recruits.each do |recruit| %>
       <div class="recruits-index-title">
